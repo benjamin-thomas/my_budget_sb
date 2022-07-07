@@ -1,4 +1,4 @@
-package invalid.bt.my_budget_sb;
+package invalid.bt.my_budget;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

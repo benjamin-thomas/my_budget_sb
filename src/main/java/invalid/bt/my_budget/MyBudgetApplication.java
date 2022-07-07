@@ -1,4 +1,4 @@
-package invalid.bt.my_budget_sb;
+package invalid.bt.my_budget;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
