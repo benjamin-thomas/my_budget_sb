@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>invalid.bt</groupId>
-    <artifactId>my_budget_sb</artifactId>
+    <artifactId>my_budget</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>my_budget_sb</name>
-    <description>my_budget_sb</description>
+    <name>my_budget</name>
+    <description>my_budget</description>
     <properties>
         <java.version>17</java.version>
     </properties>
