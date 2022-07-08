@@ -17,6 +17,11 @@ abortOnRepoNotClean "Frontend"
 echo "--> Frontend repo is clean..."
 echo "--> Building Angular..."
 ng build --configuration production
+
+echo "--> Clearing out previous static directory content..."
+rm -r ../my_budget_sb/src/main/resources/static/
+mkdir ../my_budget_sb/src/main/resources/static/
+
 echo "--> Copying the build to the backend's static directory..."
 cp -v ./dist/my-budget-ng/* ../my_budget_sb/src/main/resources/static/
 
