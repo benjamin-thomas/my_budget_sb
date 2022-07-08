@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-set -x
-
-cd ./angular
-yarn install
-ng build --configuration production
-cp -v ./dist/my-budget-ng/* ../src/main/resources/static/
