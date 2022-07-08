@@ -1,1 +1,8 @@
+:repo:deb https://dl.yarnpkg.com/debian/ stable main
 yarn
+
+# or include links to specific .deb files
+# https://downloads.example.com/example.deb
+
+# or add custom apt repos (only required if using packages outside of the standard Ubuntu APT repositories)
+# :repo:deb https://apt.example.com/ example-distro main
