@@ -1,6 +1,1 @@
-{
-  "name": "for-heroku",
-  "scripts": {
-    "heroku-postbuild": "cd ./angular/ && npx ng build --configuration production && cp -v ./dist/my-budget-ng/* ../src/main/resources/static/"
-  }
-}
+./angular/package.json
