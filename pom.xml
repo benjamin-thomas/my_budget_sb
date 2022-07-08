@@ -58,27 +58,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Build Angular app on deploy, to serve it as a static asset -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <!--
-                                To simulate what Heroku would do on deploy, run:
-                                    ./mvnw -D skipTests clean dependency:list install
-                             -->
-                            <executable>./manage/prod/build_frontend</executable>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
