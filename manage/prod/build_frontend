@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -x
+
+cd ./angular
+ng build --configuration production
+cp -v ./dist/my-budget-ng/* ../src/main/resources/static/
