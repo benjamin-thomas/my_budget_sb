@@ -1,0 +1,6 @@
+{
+  "name": "for-heroku",
+  "scripts": {
+    "heroku-postbuild": "echo ng build --prod"
+  }
+}
