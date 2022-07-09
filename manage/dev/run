@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+set -e
+
+SPRING_PROFILES_ACTIVE=dev SPRING_SECURITY_USER_PASSWORD=123 exec ./mvnw spring-boot:run
