@@ -30,4 +30,4 @@ echo "--> Copying to the static directory..."
 git add ./src/main/resources/static/
 
 echo "--> Committing the new build..."
-git commit -m 'Angular build'
+git commit -m 'Add Angular build for deploy'
