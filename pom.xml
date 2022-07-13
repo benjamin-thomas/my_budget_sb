@@ -26,8 +26,7 @@
         ./mvnw clean install -f backend
         ./mvnw clean install -f frontend
 
-    Run the backend dev server
-        SPRING_PROFILES_ACTIVE=dev SPRING_SECURITY_USER_PASSWORD=123 ./mvnw -f backend spring-boot:run
+    Otherwise, have a look at the ./manage directory.
      -->
     <modules>
         <module>frontend</module>
