@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host www.my-budget-sb.herokuapp.test",
     "build": "ng build --output-path dist/META-INF/resources",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
