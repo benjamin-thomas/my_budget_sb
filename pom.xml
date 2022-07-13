@@ -14,64 +14,24 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>my_budget</name>
     <description>my_budget</description>
-    <properties>
-        <!-- Also change system.properties -->
-        <java.version>17</java.version>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+    <packaging>pom</packaging>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+    <!--
+    Rebuild and run the whole project:
+        ./mvnw clean install
+        /usr/lib/jvm/java-17-openjdk-amd64/bin/java -jar ./backend/target/my_budget_backend-0.0.1-SNAPSHOT.jar
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+    Compile only one module
+        ./mvnw clean install -f backend
+        ./mvnw clean install -f frontend
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
-
-    <build>
-        <plugins>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
+    Run the backend dev server
+        SPRING_PROFILES_ACTIVE=dev SPRING_SECURITY_USER_PASSWORD=123 ./mvnw -f backend spring-boot:run
+     -->
+    <modules>
+        <module>frontend</module>
+        <module>backend</module>
+    </modules>
 
 </project>
