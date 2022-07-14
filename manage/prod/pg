@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+set -x
+
+# ./manage/prod/pg
+# ./manage/prod/pg :psql
+# ./manage/prod/pg :vacuum-stats
+heroku pg"$@" --app my-budget-sb
