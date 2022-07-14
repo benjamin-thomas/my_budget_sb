@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  pg:
+    image: postgres:14.4 # match with: ./manage/prod/pg
+    command: [ "postgres", "-c", "log_statement=all", "-c", "log_destination=stderr" ]
+    restart: always
+    ports:
+      - '127.14.0.2:5432:5432' # 127.1.2.2      pg.my-budget-sb.herokuapp.test
+    volumes:
+        # Using a filesystem path makes using pg_restore easier
+      - /var/docker/inklusive/my_budget_sb/pg/postgresql/data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_PASSWORD=${PGPASSWORD} # Uncomment once, and run: `docker-compose up pg`.
+    logging:
+      options:
+        max-size: '50m'
