@@ -30,7 +30,7 @@ public class SecurityConfiguration {
         return http
                 .csrf().and()
                 .authorizeHttpRequests((authorize) -> authorize
-                        .antMatchers("/", "/demo", "/hello").permitAll()
+                        .antMatchers("/", "/hello").permitAll()
                         .anyRequest().authenticated()
                 )
 //                .formLogin(withDefaults());
