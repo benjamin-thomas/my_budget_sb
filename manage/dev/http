@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+function die {
+  echo "$1"
+  exit 1
+}
+
+SESSION_PATH=./tmp/httpie/session
+SESSION_DIR=$(dirname $SESSION_PATH)
+[ -d "$SESSION_DIR" ] || mkdir -p "$SESSION_DIR"
+[ -f $SESSION_PATH ] && TOKEN=$(jq -r '.cookies."XSRF-TOKEN".value' $SESSION_PATH)
+
+VERB=$1
+[ -z "$VERB" ] && die "VERB is required (as 1st arg)"
+shift
+
+WEB_PATH=$1
+[ -z "$WEB_PATH" ] && die "WEB_PATH is required (as 2nd arg)"
+shift
+
+echo http --session $SESSION_PATH -v "$VERB" http://www.my-budget-sb.herokuapp.test:8080"$WEB_PATH" "$@" X-XSRF-TOKEN:"$TOKEN"
+exec http --session $SESSION_PATH -v "$VERB" http://www.my-budget-sb.herokuapp.test:8080"$WEB_PATH" "$@" X-XSRF-TOKEN:"$TOKEN"

@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+set -e
+
+docker-compose exec -u postgres pg psql -d my_budget_dev

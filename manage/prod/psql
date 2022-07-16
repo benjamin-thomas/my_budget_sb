@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -x
+
+# ./manage/prod/psql
+# ./manage/prod/psql -c 'SELECT 1'
+heroku psql --app my-budget-sb "$@"
