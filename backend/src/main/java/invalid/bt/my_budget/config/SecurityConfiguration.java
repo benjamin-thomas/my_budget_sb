@@ -2,44 +2,51 @@ package invalid.bt.my_budget.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 // See the JDBC auth example here later:
 //   https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter
 @Configuration
 public class SecurityConfiguration {
 
-    /*
-    Keeping for ref:
-
-        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
-
-    See:
-        https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html
-
-    Note that CSRF protection is enabled by default.
-    The above snippets may allow a SPA to read the CSRF cookie with Javascript
-     */
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf().and()
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                )
                 .authorizeHttpRequests((authorize) -> authorize
                         .antMatchers("/",
-                                "/hello",
+                                "/me",
+                                "/hello/public",
+                                "/api/login",
+                                "/api/signup",
                                 "/img/**",
                                 "/**/*.css",
                                 "/**/*.js").permitAll()
                         .anyRequest().authenticated()
                 )
-//                .formLogin(withDefaults());
-                .httpBasic(withDefaults())
+//                .formLogin(withDefaults())
+//                .httpBasic(withDefaults())
                 .build();
 
+    }
+
+    @Bean
+    public PasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
 }

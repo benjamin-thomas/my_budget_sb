@@ -1,4 +1,4 @@
-package invalid.bt.my_budget.controllers;
+package invalid.bt.my_budget.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.core.io.ClassPathResource;
