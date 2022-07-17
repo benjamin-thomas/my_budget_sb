@@ -34,6 +34,9 @@ public class AuthenticationController {
     }
 
     /*
+        rm ./tmp/httpie/session && \
+        # Get the CSRF token as a cookie, at least once.
+        ./manage/dev/http GET /hello/public && \
         ./manage/dev/http POST /api/login email=user@example.com password=123
      */
     @PostMapping("/api/login")
