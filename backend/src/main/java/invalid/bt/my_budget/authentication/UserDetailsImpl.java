@@ -7,24 +7,25 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 public class UserDetailsImpl implements UserDetails {
     @Getter
     private final String email;
     private final String passwordHash;
-    private final UserRole userRole;
+    private final UserRole role;
+    private final Boolean isEnabled;
 
-    public UserDetailsImpl(String email, String passwordHash) {
+    public UserDetailsImpl(String email, String passwordHash, UserRole role, Boolean isEnabled) {
         this.email = email;
         this.passwordHash = passwordHash;
-        userRole = UserRole.USER;
+        this.role = role;
+        this.isEnabled = isEnabled;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
-        return Collections.singletonList(simpleGrantedAuthority);
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
@@ -54,6 +55,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 }

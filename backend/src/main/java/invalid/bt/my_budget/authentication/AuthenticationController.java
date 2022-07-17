@@ -33,6 +33,11 @@ public class AuthenticationController {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
+    @GetMapping("/api/me-full")
+    public Authentication meFull() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
+
     /*
         rm ./tmp/httpie/session && \
         # Get the CSRF token from the returned cookie (at least once before posting)

@@ -1,6 +1,7 @@
 package invalid.bt.my_budget.repository;
 
 import invalid.bt.my_budget.entity.Tenant;
+import invalid.bt.my_budget.entity.UserRole;
 import org.intellij.lang.annotations.Language;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,13 +25,16 @@ public class TenantRepositoryImpl implements TenantRepository {
     @Override
     public Optional<Tenant> findByEmail(String email) {
         @Language("PostgreSQL")
-        String sql = "SELECT email, password_hash FROM tenant WHERE email = ?";
+        String sql = "SELECT email, password_hash, role, enabled FROM tenant WHERE email = ?";
 
         try {
             return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> Optional.of(
                     new Tenant(
                             rs.getString("email"),
-                            rs.getString("password_hash"))
+                            rs.getString("password_hash"),
+                            UserRole.valueOf(rs.getString("role")),
+                            rs.getBoolean("enabled")
+                    )
             ), email);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();

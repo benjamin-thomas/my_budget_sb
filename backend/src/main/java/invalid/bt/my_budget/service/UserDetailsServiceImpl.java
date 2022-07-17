@@ -5,7 +5,6 @@ import invalid.bt.my_budget.authentication.AuthenticationController;
 import invalid.bt.my_budget.dto.TenantDTO;
 import invalid.bt.my_budget.entity.Tenant;
 import invalid.bt.my_budget.repository.TenantRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -42,8 +41,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User/tenant not found!"));
 
         return new UserDetailsImpl(
-                tenant.getEmail(),
-                tenant.getPasswordHash()
+                tenant.email(),
+                tenant.passwordHash(),
+                tenant.role(),
+                tenant.isEnabled()
         );
     }
 }
