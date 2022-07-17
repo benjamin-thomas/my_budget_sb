@@ -10,7 +10,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>invalid.bt</groupId>
   <artifactId>my_budget_frontend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
