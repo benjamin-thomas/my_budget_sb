@@ -27,18 +27,11 @@ public class TenantRepositoryImpl implements TenantRepository {
         String sql = "SELECT email, password_hash FROM tenant WHERE email = ?";
 
         try {
-            return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
-                String foundEmail = rs.getString("email");
-                String foundPasswordHash = rs.getString("password_hash");
-                System.out.println("--> foundEmail = " + foundEmail);
-                System.out.println("foundPasswordHash = " + foundPasswordHash);
-
-                return Optional.of(
-                        new Tenant(
-                                rs.getString("email"),
-                                rs.getString("password_hash"))
-                );
-            }, email);
+            return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> Optional.of(
+                    new Tenant(
+                            rs.getString("email"),
+                            rs.getString("password_hash"))
+            ), email);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }

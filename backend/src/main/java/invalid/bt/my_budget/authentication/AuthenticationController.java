@@ -1,4 +1,4 @@
-package invalid.bt.my_budget.controller;
+package invalid.bt.my_budget.authentication;
 
 import invalid.bt.my_budget.dto.TenantDTO;
 import invalid.bt.my_budget.service.SignupService;
@@ -28,16 +28,17 @@ public class AuthenticationController {
         Returns the user's email address when signed in.
         Otherwise, returns "anonymousUser".
      */
-    @GetMapping("/me")
+    @GetMapping("/api/me")
     public String me() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     /*
         rm ./tmp/httpie/session && \
-        # Get the CSRF token as a cookie, at least once.
+        # Get the CSRF token from the returned cookie (at least once before posting)
         ./manage/dev/http GET /hello/public && \
-        ./manage/dev/http POST /api/login email=user@example.com password=123
+        ./manage/dev/http POST /api/login email=user@example.com password=123 && \
+        ./manage/dev/http GET /api/me
      */
     @PostMapping("/api/login")
     public void login(@RequestBody TenantDTO tenant) {

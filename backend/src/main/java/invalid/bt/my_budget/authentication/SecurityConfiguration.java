@@ -1,4 +1,4 @@
-package invalid.bt.my_budget.config;
+package invalid.bt.my_budget.authentication;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
