@@ -1,4 +1,4 @@
-package invalid.bt.my_budget.service;
+package invalid.bt.my_budget.authentication;
 
 import invalid.bt.my_budget.authentication.UserDetailsImpl;
 import invalid.bt.my_budget.authentication.AuthenticationController;
